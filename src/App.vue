@@ -117,14 +117,25 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import {defineComponent} from "vue";
+import {mapActions, mapMutations} from 'vuex'
 
 
 export default defineComponent({
   name: 'App',
-
+  created() {
+    const userAccessKey: string | null = localStorage.getItem('userAccessKey')
+    if (userAccessKey) {
+      this.updateUserAccessKey(userAccessKey)
+    }
+    this.loadBasket()
+  },
+  methods: {
+    ...mapActions(['loadBasket']),
+    ...mapMutations(['updateUserAccessKey'])
+  }
 })
 
 </script>

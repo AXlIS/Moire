@@ -1,17 +1,17 @@
 <template>
   <li class="catalog__item">
     <a class="catalog__pic" href="#">
-      <img src="img/product-1.jpg" srcset="img/product-1@2x.jpg 2x" alt="Название товара">
+      <img :src="good.img" srcset="img/product-1@2x.jpg 2x" alt="Название товара">
     </a>
 
     <h3 class="catalog__title">
       <a href="#">
-        Кружевной бюстгалтер без косточек
+        {{ good.title }}
       </a>
     </h3>
 
     <span class="catalog__price">
-              3 690 ₽
+              {{ good.price }} ₽
             </span>
 
     <ul class="colors colors--black">
@@ -46,6 +46,7 @@ import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "GoodItem",
+  props: ['good'],
   components: {}
 })
 </script>
